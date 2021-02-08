@@ -1,0 +1,18 @@
+<h1><%= @employee.name %></h1>
+<p><%= @employee.description %></p>
+
+<h3>Pending Tasks</h3>
+<ul>
+    <% @employee.tasks_by_status("Pending").each do |task| %>
+        <li><%= link_to task.name, task_path(task) %></li>
+    <% end %>
+</ul>
+
+<h3>Completed Tasks</h3>
+<ul>
+    <% @employee.tasks_by_status("Completed").each do |task| %>
+        <li><%= link_to task.name, task_path(task) %></li>
+    <% end %>
+</ul>
+
+<%= button_to "Edit Employee", edit_employee_path(@employee), method: :get %>
